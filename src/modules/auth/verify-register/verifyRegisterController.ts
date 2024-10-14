@@ -26,7 +26,7 @@ const page = `
               align-items: center;
               height: 100vh;
               margin: 0;
-              background-color: #f4f4f4;
+              background-color: #252525;
             }
             a {
               display: inline-block;
