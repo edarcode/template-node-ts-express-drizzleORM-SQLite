@@ -3,12 +3,14 @@ import { EdarErr } from "../errors/EdarErr";
 import { ErrHandler } from "../types";
 import { UnauthorizedErr } from "../errors/UnauthorizedErr";
 import { DtoErr } from "../errors/DtoErr";
+import { LoginErr } from "../errors/LoginErr";
 
 export const errorHandler: ErrHandler = (error, _req, res, _next) => {
   if (
     error instanceof EdarErr ||
     error instanceof UnauthorizedErr ||
-    error instanceof DtoErr
+    error instanceof DtoErr ||
+    error instanceof LoginErr
   ) {
     const { status, msg } = error;
     return res.status(status).json({ msg });

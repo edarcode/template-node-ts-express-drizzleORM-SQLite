@@ -4,4 +4,4 @@ import { verifyToken } from "../../../middlewares/verifyToken";
 
 export const refreshTokenRouter = Router();
 
-refreshTokenRouter.post("", verifyToken, refreshTokenController);
+refreshTokenRouter.post("", verifyToken(), refreshTokenController);

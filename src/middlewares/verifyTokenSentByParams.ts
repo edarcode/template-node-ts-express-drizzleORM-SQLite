@@ -9,7 +9,7 @@ export const verifyTokenSentByParams: Middleware = (req, res, next) => {
     if (!token) throw new UnauthorizedErr();
 
     jwt.verify(token, JWT.secret as string, (err, tokenPayload) => {
-      if (err) throw new UnauthorizedErr(403);
+      if (err) throw new UnauthorizedErr(401);
       res.locals = { ...res.locals, tokenPayload };
       next();
     });

@@ -11,7 +11,6 @@ import { LoginErr } from "../../../errors/LoginErr";
 export const loginService = async (login: Login) => {
   const account = await db.query.accounts.findFirst({
     where: (account, { eq }) => eq(account.email, login.email),
-    with: { user: { columns: { name: true, img: true } } },
   });
   if (!account) throw new LoginErr();
 
@@ -22,8 +21,8 @@ export const loginService = async (login: Login) => {
     {
       id: account.id,
       role: account.role,
-      img: account.user.img,
-      name: account.user.name,
+      img: account.img,
+      name: account.name,
     },
     JWT.secret as string,
     { expiresIn: JWT.expiresIn }

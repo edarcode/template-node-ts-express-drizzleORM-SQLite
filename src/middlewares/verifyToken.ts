@@ -4,7 +4,7 @@ import { JWT } from "../config/jwt";
 import { UnauthorizedErr } from "../errors/UnauthorizedErr";
 import { Role } from "../db/schemas";
 
-export const verifyToken = ({ role }: Params) => {
+export const verifyToken = (role?: Role) => {
   return (req: Req, res: Res, next: Next) => {
     const token = req.headers.authorization;
     if (!token) throw new UnauthorizedErr();
@@ -23,8 +23,4 @@ export const verifyToken = ({ role }: Params) => {
       next(error);
     }
   };
-};
-
-type Params = {
-  role?: Role;
 };
