@@ -2,13 +2,14 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { Next, Req, Res } from "../types";
 import { JWT } from "../config/jwt";
 import { UnauthorizedErr } from "../errors/UnauthorizedErr";
+import { Role } from "../db/schemas";
 
 export const verifyToken = ({ role }: Params) => {
   return (req: Req, res: Res, next: Next) => {
-    try {
-      const token = req.headers.authorization;
-      if (!token) throw new UnauthorizedErr();
+    const token = req.headers.authorization;
+    if (!token) throw new UnauthorizedErr();
 
+    try {
       jwt.verify(token, JWT.secret as string, (err, decoded) => {
         if (err) throw new UnauthorizedErr(401);
 
@@ -25,5 +26,5 @@ export const verifyToken = ({ role }: Params) => {
 };
 
 type Params = {
-  role?: string; // tipar con el role de la db
+  role?: Role;
 };
