@@ -1,6 +1,6 @@
 import { Controller } from "../../../types";
-import { verifyRegisterService } from "./verifyRegisterService";
 import { Register } from "../register/registerSchema";
+import { verifyRegisterService } from "./verifyRegisterService";
 
 export const verifyRegisterController: Controller = async (_req, res, next) => {
   try {
@@ -21,29 +21,41 @@ const page = `
           <title>Cuenta Creada</title>
           <style>
             body {
-              display: flex;
-              justify-content: center;
-              align-items: center;
+              display: grid;
+              place-content: center;
               height: 100vh;
               margin: 0;
               background-color: #252525;
-            }
-            a {
-              display: inline-block;
-              padding: 10px 20px;
-              background-color: #007bff;
-              color: #fff;
-              text-decoration: none;
-              border-radius: 5px;
-              transition: background-color 0.3s;
-            }
-            a:hover {
-              background-color: #0056b3;
+
+              div{
+                max-width: 400px;
+                display: grid;
+                gap: 8px;
+                justify-items: start;
+                span {
+                  color: #fff;
+                  font-size: 1.5em;
+                  }
+                a {
+                  padding: 10px 20px;
+                  background-color: #007bff;
+                  color: #fff;
+                  text-decoration: none;
+                  border-radius: 5px;
+                  transition: background-color 0.3s;
+                }
+                a:hover {
+                  background-color: #0056b3;
+                }
+              }
             }
           </style>
         </head>
         <body>
-          <a href=${process.env.CLIENT_BASE_URL}>Ir al FRONT</a>
+          <div>
+            <span>¡Enhorabuena! Has verificado tu cuenta correctamente.</span>
+            <a href=${process.env.CLIENT_BASE_URL}>Ir a ...</a>
+          </div>
         </body>
       </html>
     `;
