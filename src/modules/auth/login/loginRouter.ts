@@ -1,8 +1,8 @@
 import { Router } from "express";
 import { loginController } from "./loginController";
 import { loginSchema } from "./loginSchema";
-import { verifyBody } from "../../../middlewares/verifyBody";
+import { verifyDto } from "../../../middlewares/verifyDto";
 
 export const loginRouter = Router();
 
-loginRouter.post("", verifyBody(loginSchema), loginController);
+loginRouter.post("", verifyDto({ body: loginSchema }), loginController);

@@ -1,12 +1,12 @@
 import { Router } from "express";
-import { signupRouter } from "./signup/signupRouter";
-import { verifySignupRouter } from "./verify-signup/verifySignupRouter";
 import { loginRouter } from "./login/loginRouter";
 import { refreshTokenRouter } from "./refresh-token/refreshTokenRouter";
+import { registerRouter } from "./register/registerRouter";
+import { verifyRegisterRouter } from "./verify-register/verifyRegisterRouter";
 
 export const authRouter = Router();
 
-authRouter.use("/signup", signupRouter);
-authRouter.use("/verify-signup", verifySignupRouter);
+authRouter.use("/register", registerRouter);
+authRouter.use("/verify-register", verifyRegisterRouter);
 authRouter.use("/login", loginRouter);
 authRouter.use("/refresh-token", refreshTokenRouter);

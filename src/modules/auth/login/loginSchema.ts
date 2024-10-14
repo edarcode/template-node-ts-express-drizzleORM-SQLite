@@ -8,3 +8,5 @@ export const loginSchema = z
     password: passwordSchema,
   })
   .strict();
+
+export type Login = z.infer<typeof loginSchema>;

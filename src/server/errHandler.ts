@@ -1,14 +1,14 @@
 import { ZodError } from "zod";
 import { EdarErr } from "../errors/EdarErr";
 import { ErrHandler } from "../types";
-import { RouteErr } from "../errors/RouteErr";
 import { UnauthorizedErr } from "../errors/UnauthorizedErr";
+import { DtoErr } from "../errors/DtoErr";
 
 export const errorHandler: ErrHandler = (error, _req, res, _next) => {
   if (
     error instanceof EdarErr ||
-    error instanceof RouteErr ||
-    error instanceof UnauthorizedErr
+    error instanceof UnauthorizedErr ||
+    error instanceof DtoErr
   ) {
     const { status, msg } = error;
     return res.status(status).json({ msg });

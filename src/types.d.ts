@@ -8,4 +8,3 @@ export type Middleware = (req: Req, res: Res, next: Next) => void;
 export type Controller = (req: Req, res: Res, next: Next) => void;
 export type RouteNotFoundHandler = (req: Req, res: Res) => void;
 export type ErrHandler = (err: any, req: Req, res: Res, next: Next) => void;
-export type Uuid = `${string}-${string}-${string}-${string}-${string}`;
