@@ -4,6 +4,7 @@ import { welcomeRouter } from "../modules/welcome/welcomeRoute";
 import { routeNotFoundHandler } from "./routeNotFoundHandler";
 import { errorHandler } from "./errHandler";
 import { authRouter } from "../modules/auth/authRouter";
+import { accountsRouter } from "../modules/account/accountsRouter";
 
 // server
 
@@ -18,6 +19,7 @@ server.use(express.json());
 
 server.use("", welcomeRouter);
 server.use("/auth", authRouter);
+server.use("/account", accountsRouter);
 
 // handlers
 
